@@ -82,10 +82,10 @@ plugins:
   - mkdocstrings:
       handlers:
           python:
-            setup_commands:
-              - import sys
-              # - sys.path.append("flee")
-              - sys.path.insert(0, ".")
+            # setup_commands:
+            #   - import sys
+            #   # - sys.path.append("flee")
+            #   - sys.path.insert(0, ".")
             rendering:
               show_root_heading: false
               show_source: true
