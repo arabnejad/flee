@@ -9,6 +9,9 @@ from flee.Diagnostics import write_agents
 
 
 class Person:
+    """
+    The base class for the agent object
+    """
 
     __slots__ = ['location', 'distance_travelled', 'home_location', 'timesteps_since_departure', 'places_travelled',
                  'recent_travel_distance', 'distance_moved_this_timestep', 'travelling', 'distance_travelled_on_link']
@@ -40,6 +43,9 @@ class Person:
             self.distance_travelled = 0
 
     def evolve(self, ForceTownMove=False):
+        """
+        This should be completed !!!
+        """
 
         if self.travelling == False:
             if self.location.town and ForceTownMove:
@@ -67,6 +73,9 @@ class Person:
                     self.distance_travelled_on_link = 0
 
     def finish_travel(self):
+        """
+        checks if the agent
+        """
         if self.travelling:
 
             if self.places_travelled == 1 and SimulationSettings.StartOnFoot:  # First journey
@@ -132,7 +141,8 @@ class Person:
 
     def getLinkWeight(self, link, awareness_level):
         """
-        Calculate the weight of an adjacent link. Weight = probability that it will be chosen.
+        Calculate the weight of an adjacent link. Weight = probability
+        that it will be chosen.
         """
 
         # If turning back is NOT allowed, remove weight from the last location.
