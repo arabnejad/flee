@@ -211,9 +211,6 @@ nav:
     #     - Add Tasks: pages/examples/add_tasks.md
     #     - Static Min-Min: pages/examples/min_min_scheduling_static.md
 
-    - Code Reference:
-       - flee:
-         - Person: code_reference/flee.md
-    #     - HOST: reference/base/HOST.md
-    #     - CPU: reference/base/CPU.md
-    #     - LINK: reference/base/LINK.md
+    # - Code Reference:
+    #    - flee:
+    #      - Person: code_reference/flee.md
