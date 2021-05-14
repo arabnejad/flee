@@ -4,6 +4,6 @@ python:
   version: 3.7
   install:
     - requirements: docs/mkdocs-requirements.txt
-  path: .
+  path: flee
 mkdocs:
  configuration: mkdocs.yml

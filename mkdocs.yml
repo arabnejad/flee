@@ -80,16 +80,20 @@ plugins:
       strict: true  
   - macros
   - mkdocstrings:
-      default_handler: python
       handlers:
-        python:
-          rendering:
-            show_root_heading: false
-            show_source: true
-            show_category_heading: true
-          selection:
-            filters:
-              - "!^_"  # exlude all members starting with _
+          python:
+            setup_commands:
+              - import sys
+              - sys.path.append("flee")
+              # - sys.path.insert(0, ".")
+            rendering:
+              show_root_heading: false
+              show_source: true
+              show_category_heading: true
+            selection:
+              # new_path_syntax: true
+              filters:
+                - "!^_"  # exlude all members starting with _
   - mermaid2:
       arguments:
         securityLevel: 'loose'
@@ -209,7 +213,7 @@ nav:
 
     - Code Reference:
        - flee:
-         - Person: code_reference/flee/flee.md
+         - Person: code_reference/flee.md
     #     - HOST: reference/base/HOST.md
     #     - CPU: reference/base/CPU.md
     #     - LINK: reference/base/LINK.md
