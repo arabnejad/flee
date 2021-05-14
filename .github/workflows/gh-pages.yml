@@ -12,7 +12,7 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install -r docs/mkdocs-requirements.txt
-      - run: sudo apt install graphviz-dev graphviz
+      - run: sudo apt install graphviz-dev graphviz openmpi-bin libopenmpi-dev
       - run: pip install -r requirements.txt
       - run: mkdocs gh-deploy --force
 
