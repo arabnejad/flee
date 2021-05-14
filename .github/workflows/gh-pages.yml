@@ -1,0 +1,35 @@
+name: build and deploy mkdocs to github pages
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: pip install -r docs/mkdocs-requirements.txt
+      - run: sudo apt install graphviz-dev graphviz
+      - run: pip install -r requirements.txt
+      - run: mkdocs gh-deploy --force
+
+    # - name: Checkout  🛎️
+    #   uses: actions/checkout@v2
+
+    # - name: Set up Python 3.8  🐍      
+    #   uses: actions/setup-python@v2
+    #   with:
+    #     python-version: 3.x
+    # - name: Install Dependencies  📥
+    #   run: |
+    #     pip install -r docs/mkdocs-requirements.txt
+    #     sudo apt install graphviz-dev graphviz        
+    #     pip install -r requirements.txt
+
+    # - name: Run mkdocs gh-deploy  🚀
+    #   run: |
+    #     mkdocs gh-deploy --force
+
