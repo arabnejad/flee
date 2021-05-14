@@ -1,6 +1,6 @@
 # **Person class**
 
-::: flee.flee.Person
+::: flee.flee:Person
 	rendering:
 		show_root_toc_entry: False
 		selection:

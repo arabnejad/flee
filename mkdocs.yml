@@ -91,9 +91,10 @@ plugins:
               show_source: true
               show_category_heading: true
             selection:
-              new_path_syntax: False
+              new_path_syntax: True
               filters:
                 - "!^_"  # exlude all members starting with _
+
   - mermaid2:
       arguments:
         securityLevel: 'loose'
