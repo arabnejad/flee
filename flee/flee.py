@@ -57,7 +57,7 @@ class Person:
     def evolve(self, ForceTownMove=False):
         """
         This should be completed !!!
-        
+
         Args:
             ForceTownMove (bool, optional): Description
         """
@@ -181,10 +181,10 @@ class Person:
     def normalizeWeights(self, weights):
         """
         Summary
-        
+
         Args:
             weights (TYPE): Description
-        
+
         Returns:
             TYPE: Description
         """
@@ -197,11 +197,11 @@ class Person:
     def chooseFromWeights(self, weights, linklist):
         """
         Summary
-        
+
         Args:
             weights (TYPE): Description
             linklist (TYPE): Description
-        
+
         Returns:
             TYPE: Description
         """
@@ -311,6 +311,36 @@ class Person:
 
 class Location:
 
+    """
+    The base class for the Location object
+
+    Attributes:
+        camp (bool): Description
+        capacity (TYPE): Description
+        closed_links (list): Description
+        conflict (bool): Description
+        country (TYPE): Description
+        foreign (bool): Description
+        forward (bool): Description
+        incoming_journey_lengths (list): Description
+        links (list): Description
+        LocationScore (float): Description
+        marker (bool): Description
+        movechance (float): Description
+        name (TYPE): Description
+        NeighbourhoodScore (float): Description
+        numAgents (int): Description
+        numAgentsOnRank (int): Description
+        numAgentsSpawned (int): Description
+        pop (TYPE): Description
+        RegionScore (float): Description
+        scores (TYPE): Description
+        time (int): Description
+        town (bool): Description
+        x (TYPE): Description
+        y (TYPE): Description
+    """
+
     def __init__(self, name, x=0.0, y=0.0, movechance=0.001, capacity=-1, pop=0, foreign=False, country="unknown"):
         self.name = name
         self.x = x
@@ -395,9 +425,15 @@ class Location:
         self.town = False
 
     def DecrementNumAgents(self):
+        """
+        Summary
+        """
         self.numAgents -= 1
 
     def IncrementNumAgents(self):
+        """
+        Summary
+        """
         self.numAgents += 1
 
     def print(self):
@@ -420,6 +456,14 @@ class Location:
         Calculate the residual weighting factor, when pop is between 0.9 and 1.0 of capacity (with default settings).
         Weight should be 1.0 at 0.9, and 0.0 at 1.0 capacity level.
         Asserts are added to prevent corruption of simulation results in case this function misbehaves.
+
+        Args:
+            residual (float): the residual weighting factor
+            cap_limit (int): Description
+            nearly_full_occ (float): Description
+
+        Returns:
+            TYPE: Description
         """
 
         weight = 1.0 - (residual / (cap_limit * (1.0 - nearly_full_occ)))
@@ -430,10 +474,18 @@ class Location:
         return weight
 
     def getCapMultiplier(self, numOnLink):
-        """ Checks whether a given location has reached full capacity or is close to it.
-            returns 1.0 if occupancy < nearly_full_occ (0.9).
-            returns 0.0 if occupancy >= 1.0.
-            returns a value in between for intermediate values
+        """
+        Checks whether a given location has reached full capacity or is close to it.
+        * returns 1.0 if occupancy < nearly_full_occ (0.9).
+        * returns 0.0 if occupancy >= 1.0.
+        * returns a value in between for intermediate values
+
+        Args:
+            numOnLink (TYPE): Description
+
+        Returns:
+            TYPE: Description
+
         """
         nearly_full_occ = 0.9  # occupancy rate to be considered nearly full.
         # full occupancy limit (should be equal to self.capacity).
@@ -452,9 +504,25 @@ class Location:
         return self.CalculateResidualWeightingFactor(residual, cap_limit, nearly_full_occ)
 
     def getScores(self, index):
+        """
+        Summary
+
+        Args:
+            index (TYPE): Description
+
+        Returns:
+            TYPE: Description
+        """
         return self.scores[index]
 
     def setScore(self, index, value):
+        """
+        Summary
+
+        Args:
+            index (TYPE): Description
+            value (TYPE): Description
+        """
         self.scores[index] = value
 
     def updateLocationScore(self):

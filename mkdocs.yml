@@ -214,6 +214,7 @@ nav:
 
     - Code Reference:
        - flee:
-         - Person: code_reference/flee.md
+         - Person: code_reference/flee_person.md
+         - Location: code_reference/flee_location.md
 
     - Publications: papers/papers.md
