@@ -37,7 +37,7 @@ extra:
 theme:
   name: material
   # 404 page
-  custom_dir: docs/theme/overrides
+  custom_dir: docs/static/theme/overrides
   static_templates:
     - 404.html  
   include_search_page: false
@@ -119,7 +119,7 @@ plugins:
 #################
 extra_css:
   - static/css/custom.css
-  - static/css/colors.css
+  # - static/css/colors.css
   # - static/css/terminal.css
   # - static/css/extra.css
 
