@@ -11,6 +11,18 @@ from flee.Diagnostics import write_agents
 class Person:
     """
     The base class for the agent object
+
+    Attributes:
+        distance_moved_this_timestep (float): Description
+        distance_travelled (int): Description
+        distance_travelled_on_link (int): Description
+        home_location (TYPE): Description
+        location (TYPE): Description
+        places_travelled (int): Description
+        recent_travel_distance (float): Description
+        timesteps_since_departure (int): Description
+        travelling (bool): Description
+
     """
 
     __slots__ = ['location', 'distance_travelled', 'home_location', 'timesteps_since_departure', 'places_travelled',
@@ -45,6 +57,9 @@ class Person:
     def evolve(self, ForceTownMove=False):
         """
         This should be completed !!!
+        
+        Args:
+            ForceTownMove (bool, optional): Description
         """
 
         if self.travelling == False:
@@ -143,6 +158,13 @@ class Person:
         """
         Calculate the weight of an adjacent link. Weight = probability
         that it will be chosen.
+
+        Args:
+            link (Link obj): Description
+            awareness_level (int): Description
+
+        Returns:
+            TYPE: Description
         """
 
         # If turning back is NOT allowed, remove weight from the last location.
@@ -157,6 +179,15 @@ class Person:
         return float(link.endpoint.scores[awareness_level] / float(SimulationSettings.Softening + link.distance))
 
     def normalizeWeights(self, weights):
+        """
+        Summary
+        
+        Args:
+            weights (TYPE): Description
+        
+        Returns:
+            TYPE: Description
+        """
         if np.sum(weights) > 0.0:
             weights /= np.sum(weights)
         else:  # if all have zero weight, then we do equal weighting.
@@ -164,6 +195,16 @@ class Person:
         return weights
 
     def chooseFromWeights(self, weights, linklist):
+        """
+        Summary
+        
+        Args:
+            weights (TYPE): Description
+            linklist (TYPE): Description
+        
+        Returns:
+            TYPE: Description
+        """
         if len(weights) == 0:
             return -1
         else:
@@ -171,6 +212,12 @@ class Person:
             return np.random.choice(list(range(0, len(linklist))), p=weights)
 
     def selectRouteRuleset1(self):
+        """
+        Summary
+
+        Returns:
+            TYPE: Description
+        """
         linklen = len(self.location.links)
         weights = np.zeros(linklen)
 
@@ -193,13 +240,32 @@ class Person:
         return self.chooseFromWeights(weights, self.location.links)
 
     def getEndPointScore(self, link):
-        #print(link.endpoint.name, link.endpoint.scores)
+        """
+        Summary
+
+        Args:
+            link (TYPE): Description
+
+        Returns:
+            TYPE: Description
+        """
+        # print(link.endpoint.name, link.endpoint.scores)
         return link.endpoint.scores[1]
 
     def calculateLinkWeight(self, link, prior_distance, origin_names, step, debug=False):
         """
         Calculates Link Weights recursively based on awareness level.
         Loops are avoided.
+
+        Args:
+            link (TYPE): Description
+            prior_distance (TYPE): Description
+            origin_names (TYPE): Description
+            step (TYPE): Description
+            debug (bool, optional): Description
+
+        Returns:
+            TYPE: Description
         """
         weight = float(self.getEndPointScore(link) / float(SimulationSettings.Softening +
                                                            link.distance + prior_distance)) * link.endpoint.getCapMultiplier(link.numAgents)
@@ -221,6 +287,15 @@ class Person:
         return weight
 
     def selectRouteRuleset2(self, debug=False):
+        """
+        Summary
+
+        Args:
+            debug (bool, optional): Description
+
+        Returns:
+            TYPE: Description
+        """
         linklen = len(self.location.links)
         weights = np.zeros(linklen)
 
