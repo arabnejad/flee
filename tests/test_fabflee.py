@@ -23,7 +23,7 @@ def test_mali(run_py):
 def test_par_mali(run_par):
     logger.addHandler(logging.StreamHandler(sys.stdout))
     logger.setLevel(logging.DEBUG)
-    ret = run_par("mali", "10", "4")
+    ret = run_par("mali", "10", "2")
     assert ret == "OK"
 
 
@@ -113,10 +113,6 @@ def run_par():
 
         ret = "OK"
         try:
-            subprocess.check_output(
-                ["ls"], stderr=subprocess.STDOUT
-            ).decode("utf-8")
-
             output = subprocess.check_output(
                 cmd, stderr=subprocess.STDOUT
             ).decode("utf-8")
