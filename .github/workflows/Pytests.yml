@@ -11,13 +11,26 @@ env:
   
 jobs:
   build:
-    name: Python ${{ matrix.python-version }}  ${{ matrix.os }}
+    name: Python ${{ matrix.python-version }} ${{ matrix.os }} ${{ matrix.mpi }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:        
         os: [ "ubuntu-latest", "macOS-latest" ]
         python-version: [ "3.6", "3.7", "3.8", "3.9" ]
+        include:
+        - os: ubuntu-latest
+          mpi: mpich
+          install-mpi: sudo apt install -y mpich libmpich-dev
+        - os: ubuntu-latest
+          mpi: openmpi
+          install-mpi: sudo apt install -y openmpi-bin libopenmpi-dev
+        - os: macos-latest
+          mpi: mpich
+          install-mpi: brew install mpich
+        - os: macos-latest
+          mpi: openmpi
+          install-mpi: brew install openmpi
 
     steps:
       - name: Checkout  🛎️
@@ -46,8 +59,12 @@ jobs:
           python3 --version
           python --version
 
+      - name: Install MPI 📥
+        run: ${{ matrix.install-mpi }}
+
       - name: Install Python Dependencies  📥
         run: |
+          sudo apt install openmpi-bin libopenmpi-dev
           python3 -m pip install --upgrade pip      
           python3 -m pip install --upgrade numpy pandas mpi4py
 
