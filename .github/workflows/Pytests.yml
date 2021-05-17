@@ -73,6 +73,6 @@ jobs:
         run: |
           export PYTHONPATH=${{ github.workspace }}:$PYTHONPATH
           which mpirun
-          # git clone https://github.com/djgroen/FabFlee.git
-          # python3 -m pytest --log-cli-level=10 tests/
+          git clone https://github.com/djgroen/FabFlee.git
+          python3 -m pytest --tb=native --log-cli-level=10 tests/
 
