@@ -127,7 +127,7 @@ def run_par():
                 # shell=True,
                 # stderr=subprocess.STDOUT,
                 text=True,
-            ).decode("utf-8")
+            )
         except subprocess.CalledProcessError as e:
             # ret = "Command '{}' return non-zero exit status: "
             ret = "{} -- {} -- {}".format(
