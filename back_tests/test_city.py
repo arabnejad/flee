@@ -7,18 +7,16 @@ import flee.postprocessing.analysis as a
 import sys
 
 
-def AddInitialRefugees(e, loc):
-    """ Add the initial refugees to a location, using the location name"""
-    num_refugees = 1000
-    for i in range(0, num_refugees):
-        e.addAgent(location=loc)
-
-
-def date_to_sim_days(date):
-    return DataTable.subtract_dates(date, "2010-01-01")
-
-
 def test_city(end_time=10, last_physical_day=10):
+
+    def AddInitialRefugees(e, loc):
+        """ Add the initial refugees to a location, using the location name"""
+        num_refugees = 1000
+        for i in range(0, num_refugees):
+            e.addAgent(location=loc)
+
+    def date_to_sim_days(date):
+        return DataTable.subtract_dates(date, "2010-01-01")
 
     e = pflee.Ecosystem()
 
