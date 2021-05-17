@@ -23,44 +23,44 @@ def test_mali(run_py):
 def test_par_mali(run_par):
     logger.addHandler(logging.StreamHandler(sys.stdout))
     logger.setLevel(logging.DEBUG)
-    ret = run_par("mali", "10", "2")
+    ret = run_par("mali", "10", "4")
     assert ret == "OK"
 
 
-def test_burundi(run_py):
-    ret = run_py("burundi", "10")
-    assert ret == "OK"
+# def test_burundi(run_py):
+#     ret = run_py("burundi", "10")
+#     assert ret == "OK"
 
 
-def test_par_burundi(run_par):
-    logger.addHandler(logging.StreamHandler(sys.stdout))
-    logger.setLevel(logging.DEBUG)
-    ret = run_par("burundi", "10", "2")
-    assert ret == "OK"
+# def test_par_burundi(run_par):
+#     logger.addHandler(logging.StreamHandler(sys.stdout))
+#     logger.setLevel(logging.DEBUG)
+#     ret = run_par("burundi", "10", "2")
+#     assert ret == "OK"
 
 
-def test_car(run_py):
-    ret = run_py("car", "10")
-    assert ret == "OK"
+# def test_car(run_py):
+#     ret = run_py("car", "10")
+#     assert ret == "OK"
 
 
-def test_par_car(run_par):
-    logger.addHandler(logging.StreamHandler(sys.stdout))
-    logger.setLevel(logging.DEBUG)
-    ret = run_par("car", "10", "2")
-    assert ret == "OK"
+# def test_par_car(run_par):
+#     logger.addHandler(logging.StreamHandler(sys.stdout))
+#     logger.setLevel(logging.DEBUG)
+#     ret = run_par("car", "10", "2")
+#     assert ret == "OK"
 
 
-def test_ssudan(run_py):
-    ret = run_py("ssudan", "10")
-    assert ret == "OK"
+# def test_ssudan(run_py):
+#     ret = run_py("ssudan", "10")
+#     assert ret == "OK"
 
 
-def test_par_ssudan(run_par):
-    logger.addHandler(logging.StreamHandler(sys.stdout))
-    logger.setLevel(logging.DEBUG)
-    ret = run_par("ssudan", "10", "2")
-    assert ret == "OK"
+# def test_par_ssudan(run_par):
+#     logger.addHandler(logging.StreamHandler(sys.stdout))
+#     logger.setLevel(logging.DEBUG)
+#     ret = run_par("ssudan", "10", "2")
+#     assert ret == "OK"
 
 
 @pytest.fixture
@@ -101,7 +101,7 @@ def run_par():
         os.chdir(config_path)
         cmd = ["mpirun",
                "-np",
-               cores + 3,
+               cores,
                "python3",
                "run.py",
                "input_csv",
