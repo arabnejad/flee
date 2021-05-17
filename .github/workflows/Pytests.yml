@@ -65,13 +65,11 @@ jobs:
       - name: Install MPI 📥
         run: |
           ${{ matrix.install-mpi }}
-          which mpirun
-          which mpiexec
 
 
       - name: Install Python Dependencies  📥
         run: |
-          sudo apt install openmpi-bin libopenmpi-dev
+          # sudo apt install openmpi-bin libopenmpi-dev
           python3 -m pip install --upgrade pip wheel
           python3 -m pip install --upgrade -r requirements.txt
 
