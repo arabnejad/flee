@@ -101,7 +101,7 @@ def run_par():
         os.chdir(config_path)
         cmd = ["mpirun",
                "-np",
-               cores,
+               cores + 3,
                "python3",
                "run.py",
                "input_csv",
