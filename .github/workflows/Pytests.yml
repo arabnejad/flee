@@ -16,24 +16,23 @@ jobs:
     strategy:
       fail-fast: false
       matrix:        
-        # os: [ "ubuntu-latest", "macOS-latest" ]
-        os: [ "ubuntu-latest"]
+        os: [ "ubuntu-latest", "macOS-latest" ]
         python-version: [  "3.8" ]
         # python-version: [ "3.6", "3.7", "3.8", "3.9" ]
         mpi: [mpich, openmpi]
         include:
-        # - os: ubuntu-latest
-        #   mpi: mpich
-        #   install-mpi: sudo apt install -y mpich libmpich-dev
+        - os: ubuntu-latest
+          mpi: mpich
+          install-mpi: sudo apt install -y mpich libmpich-dev
         - os: ubuntu-latest
           mpi: openmpi
           install-mpi: sudo apt install -y openmpi-bin libopenmpi-dev
-        # - os: macos-latest
-        #   mpi: mpich
-        #   install-mpi: brew install mpich
-        # - os: macos-latest
-        #   mpi: openmpi
-        #   install-mpi: brew install openmpi
+        - os: macos-latest
+          mpi: mpich
+          install-mpi: brew install mpich
+        - os: macos-latest
+          mpi: openmpi
+          install-mpi: brew install openmpi
 
     steps:
       - name: Checkout  🛎️
@@ -66,7 +65,7 @@ jobs:
         run: ${{ matrix.install-mpi }}
 
 
-      - name: Install Python Dependencies and MPI 📥
+      - name: Install Python Dependencies 📥
         run: |
           # sudo apt install openmpi-bin libopenmpi-dev
           python3 -m pip install --upgrade pip wheel
