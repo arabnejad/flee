@@ -120,8 +120,9 @@ def run_par():
             print(e.output)
             print(e.stderr)
             print(e.stdout)
-            ret = "Command '{}' return non-zero exit status: {}\n{}".format(
-                " ".join(cmd), e.returncode, e.output
+            ret = "Command '{}' return non-zero exit status: "
+            "{} -- {} -- {}".format(
+                " ".join(cmd), e.returncode, e.output, e.stdout.decode()
             )
 
         os.chdir(current_dir)
