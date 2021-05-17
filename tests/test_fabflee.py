@@ -103,7 +103,7 @@ def run_par():
                "-n",
                cores,
                "python3",
-               "run.py",
+               "run_par.py",
                "input_csv",
                "source_data",
                simulation_period,
