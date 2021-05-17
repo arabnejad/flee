@@ -21,9 +21,9 @@ def test_mali(run_py):
 
 
 def test_par_mali(run_par):
-    logger.addHandler(logging.StreamHandler(sys.stdout))
-    logger.setLevel(logging.DEBUG)
-    ret = run_par("mali", "10", "4")
+    # logger.addHandler(logging.StreamHandler(sys.stdout))
+    # logger.setLevel(logging.DEBUG)
+    ret = run_par("mali", "10", "2")
     assert ret == "OK"
 
 
