@@ -116,7 +116,7 @@ def run_par():
             cmd,
             # shell=True,
             # capture_output=True,
-            stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+            # stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
             text=True
             # stderr=subprocess.STDOUT
         )
