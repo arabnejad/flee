@@ -2,7 +2,6 @@ import os
 import sys
 import subprocess
 import pytest
-import logging
 
 
 base = os.path.join(
@@ -10,9 +9,6 @@ base = os.path.join(
     "FabFlee/config_files"
 )
 
-# logger = logging.getLogger(__name__)
-# logger.addHandler(logging.StreamHandler(sys.stdout))
-# logger.setLevel(logging.DEBUG)
 
 # GitHub action = 2 cores
 
