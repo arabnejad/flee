@@ -113,7 +113,7 @@ def run_par():
 
         ret = "OK"
         try:
-            output = subprocess.check_output(cmd).decode("utf-8")
+            output = subprocess.check_output(cmd, shell=True).decode("utf-8")
         except subprocess.CalledProcessError as e:
             print(e.output)
             print(e.stderr)
