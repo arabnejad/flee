@@ -105,9 +105,9 @@ def run_par():
                "python3",
                "run_par.py",
                "input_csv",
-               "source_data",
+               "source_data1",
                simulation_period,
-               "simsetting1.csv",
+               "simsetting.csv",
                "> out.csv"
                ]
 
