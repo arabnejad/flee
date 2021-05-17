@@ -35,7 +35,7 @@ def test_burundi(run_py):
 def test_par_burundi(run_par):
     logger.addHandler(logging.StreamHandler(sys.stdout))
     logger.setLevel(logging.DEBUG)
-    ret = run_par("burundi", "10", "4")
+    ret = run_par("burundi", "10", "6")
     assert ret == "OK"
 
 
@@ -47,7 +47,7 @@ def test_car(run_py):
 def test_par_car(run_par):
     logger.addHandler(logging.StreamHandler(sys.stdout))
     logger.setLevel(logging.DEBUG)
-    ret = run_par("car", "10", "2")
+    ret = run_par("car", "10", "6")
     assert ret == "OK"
 
 
@@ -59,7 +59,7 @@ def test_ssudan(run_py):
 def test_par_ssudan(run_par):
     logger.addHandler(logging.StreamHandler(sys.stdout))
     logger.setLevel(logging.DEBUG)
-    ret = run_par("ssudan", "10", "2")
+    ret = run_par("ssudan", "10", "6")
     assert ret == "OK"
 
 
@@ -105,7 +105,7 @@ def run_par():
                "python3",
                "run_par.py",
                "input_csv",
-               "source_data1",
+               "source_data",
                simulation_period,
                "simsetting.csv",
                "> out.csv"
@@ -113,13 +113,8 @@ def run_par():
 
         ret = "OK"
         try:
-            output = subprocess.check_output(
-                cmd, stderr=subprocess.STDOUT
-            ).decode("utf-8")
+            output = subprocess.check_output(cmd).decode("utf-8")
         except subprocess.CalledProcessError as e:
-            print(e.output)
-            print(e.stderr)
-            print(e.stdout)
             ret = "Command '{}' return non-zero exit status: "
             "{} -- {} -- {}".format(
                 " ".join(cmd), e.returncode, e.output, e.stdout.decode()

@@ -32,10 +32,6 @@ def test_city(end_time=10, last_physical_day=10):
 
     e, lm = ig.StoreInputGeographyInEcosystem(e)
 
-    #print("Network data loaded")
-
-    #d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory="test_data/test_input_csv/refugee_data", start_date="2010-01-01", data_layout="data_layout.csv")
-
     output_header_string = "Day,"
 
     camp_locations = ["N", "E", "S", "W"]
@@ -47,7 +43,9 @@ def test_city(end_time=10, last_physical_day=10):
             lm[l].name, lm[l].name, lm[l].name)
 
     if e.getRankN(0):
-        output_header_string += "Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
+        output_header_string += "Total error,refugees in camps (UNHCR),"
+        "total refugees (simulation),raw UNHCR refugee count,"
+        "refugees in camps (simulation),refugee_debt"
         print(output_header_string)
 
     # Set up a mechanism to incorporate temporary decreases in refugees
@@ -116,8 +114,9 @@ if __name__ == "__main__":
         else:
             end_time = 10
             last_physical_day = 10
-            duration = flee.SimulationSettings.SimulationSettings.ReadFromCSV(sys.argv[
-                                                                              1])
+            duration = flee.SimulationSettings.SimulationSettings.ReadFromCSV(
+                sys.argv[1]
+            )
             if duration > 0:
                 end_time = duration
                 last_physical_day = end_time
