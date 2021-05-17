@@ -72,6 +72,7 @@ jobs:
       - name: Test with pytest 🚀
         run: |
           export PYTHONPATH=${{ github.workspace }}:$PYTHONPATH
+          export OMPI_MCA_rmaps_base_oversubscribe=yes
           which mpirun
           git clone https://github.com/djgroen/FabFlee.git
           python3 -m pytest --log-cli-level=DEBUG tests/
