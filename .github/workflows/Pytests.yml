@@ -77,9 +77,11 @@ jobs:
           export OMPI_MCA_rmaps_base_oversubscribe=yes
           which mpirun
           git clone https://github.com/djgroen/FabFlee.git
-          cd FabFlee/config_files/mali
-          ls
-          mpirun -n 3 python3 run_par.py input_csv source_data 10 simsetting.csv > out.csv
-          cd ../../..
+
+          # cd FabFlee/config_files/mali
+          # ls
+          # mpirun -n 3 python3 run_par.py input_csv source_data 10 simsetting.csv > out.csv
+          # cd ../../..
+          
           python3 -m pytest --log-cli-level=DEBUG tests/
 
