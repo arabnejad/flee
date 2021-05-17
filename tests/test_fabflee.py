@@ -99,9 +99,7 @@ def run_par():
         config_path = os.path.join(base, config)
         current_dir = os.getcwd()
         os.chdir(config_path)
-        cmd = ["ls",
-               ";",
-               "mpirun",
+        cmd = ["mpirun",
                "-np",
                cores,
                "python3",
@@ -115,6 +113,10 @@ def run_par():
 
         ret = "OK"
         try:
+            subprocess.check_output(
+                ["ls"], stderr=subprocess.STDOUT
+            ).decode("utf-8")
+
             output = subprocess.check_output(
                 cmd, stderr=subprocess.STDOUT
             ).decode("utf-8")
