@@ -4,7 +4,10 @@ import subprocess
 import pytest
 
 
-base = os.path.join(os.environ['TRAVIS_BUILD_DIR'], "FabFlee/config_files")
+base = os.path.join(
+    os.path.dirname(os.path.dirname(__file__)),
+    "FabFlee/config_files"
+)
 
 
 def test_mali(run_py):
