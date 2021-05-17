@@ -16,22 +16,24 @@ jobs:
     strategy:
       fail-fast: false
       matrix:        
-        os: [ "ubuntu-latest", "macOS-latest" ]
-        python-version: [ "3.6", "3.7", "3.8", "3.9" ]
+        # os: [ "ubuntu-latest", "macOS-latest" ]
+        os: [ "ubuntu-latest"]
+        python-version: [  "3.8" ]
+        # python-version: [ "3.6", "3.7", "3.8", "3.9" ]
         mpi: [mpich, openmpi]
         include:
-        - os: ubuntu-latest
-          mpi: mpich
-          install-mpi: sudo apt install -y mpich libmpich-dev
+        # - os: ubuntu-latest
+        #   mpi: mpich
+        #   install-mpi: sudo apt install -y mpich libmpich-dev
         - os: ubuntu-latest
           mpi: openmpi
           install-mpi: sudo apt install -y openmpi-bin libopenmpi-dev
-        - os: macos-latest
-          mpi: mpich
-          install-mpi: brew install mpich
-        - os: macos-latest
-          mpi: openmpi
-          install-mpi: brew install openmpi
+        # - os: macos-latest
+        #   mpi: mpich
+        #   install-mpi: brew install mpich
+        # - os: macos-latest
+        #   mpi: openmpi
+        #   install-mpi: brew install openmpi
 
     steps:
       - name: Checkout  🛎️
@@ -75,5 +77,8 @@ jobs:
           export OMPI_MCA_rmaps_base_oversubscribe=yes
           which mpirun
           git clone https://github.com/djgroen/FabFlee.git
-          python3 -m pytest --log-cli-level=DEBUG tests/
+          cd FabFlee/config_files/mali
+          ls
+          mpirun -np 2 python3 run.py input_csv source_data 10 simsetting.csv > out.csv
+          # python3 -m pytest --log-cli-level=DEBUG tests/
 
