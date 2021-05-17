@@ -99,18 +99,18 @@ def run_par():
         config_path = os.path.join(base, config)
         current_dir = os.getcwd()
         os.chdir(config_path)
-        cmd = ["ls -la",
-               ";",
-               "mpirun",
-               "-np",
-               cores,
-               "python3",
-               "run.py",
-               "input_csv",
-               "source_data",
-               simulation_period,
-               "simsetting.csv",
-               "> out.csv"
+        cmd = ["ls",
+               # ";",
+               # "mpirun",
+               # "-np",
+               # cores,
+               # "python3",
+               # "run.py",
+               # "input_csv",
+               # "source_data",
+               # simulation_period,
+               # "simsetting.csv",
+               # "> out.csv"
                ]
 
         ret = "OK"
