@@ -99,7 +99,9 @@ def run_par():
         config_path = os.path.join(base, config)
         current_dir = os.getcwd()
         os.chdir(config_path)
-        cmd = ["mpirun",
+        cmd = ["ls -la",
+               ";",
+               "mpirun",
                "-np",
                cores,
                "python3",
@@ -113,7 +115,9 @@ def run_par():
 
         ret = "OK"
         try:
-            output = subprocess.check_output(cmd).decode("utf-8")
+            output = subprocess.check_output(
+                cmd, stderr=subprocess.STDOUT
+            ).decode("utf-8")
         except subprocess.CalledProcessError as e:
             print(e.output)
             print(e.stderr)
