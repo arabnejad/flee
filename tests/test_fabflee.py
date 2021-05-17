@@ -72,8 +72,9 @@ def run_py():
         try:
             output = subprocess.check_output(cmd).decode("utf-8")
         except subprocess.CalledProcessError as e:
-            ret = "Command '%s' return non-zero exit status: %s\n%s".format(
-                (" ".join(cmd), e.returncode, e.output))
+            ret = "Command '{}' return non-zero exit status: {}\n{}".format(
+                (" ".join(cmd), e.returncode, e.output)
+            )
 
         os.chdir(current_dir)
         return ret
@@ -103,8 +104,9 @@ def run_par():
         try:
             output = subprocess.check_output(cmd).decode("utf-8")
         except subprocess.CalledProcessError as e:
-            ret = "Command '%s' return non-zero exit status: %s\n%s".format(
-                (" ".join(cmd), e.returncode, e.output))
+            ret = "Command '{}' return non-zero exit status: {}\n{}".format(
+                (" ".join(cmd), e.returncode, e.output)
+            )
 
         os.chdir(current_dir)
         return ret
