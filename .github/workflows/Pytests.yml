@@ -63,11 +63,10 @@ jobs:
           python --version
 
       - name: Install MPI 📥
-        run: |
-          ${{ matrix.install-mpi }}
+        run: ${{ matrix.install-mpi }}
 
 
-      - name: Install Python Dependencies  📥
+      - name: Install Python Dependencies and MPI 📥
         run: |
           # sudo apt install openmpi-bin libopenmpi-dev
           python3 -m pip install --upgrade pip wheel
