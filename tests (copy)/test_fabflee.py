@@ -2,7 +2,6 @@ import os
 import sys
 import subprocess
 import pytest
-import logging
 
 
 base = os.path.join(
@@ -10,15 +9,46 @@ base = os.path.join(
     "FabFlee/config_files"
 )
 
-logger = logging.getLogger(__name__)
-
 # GitHub action = 2 cores
 
 
+def test_mali(run_py):
+    ret = run_py("mali", "10")
+    assert ret == "OK"
+
+
 def test_par_mali(run_par):
-    logger.addHandler(logging.StreamHandler(sys.stdout))
-    logger.setLevel(logging.DEBUG)
     ret = run_par("mali", "10", "2")
+    assert ret == "OK"
+
+
+def test_burundi(run_py):
+    ret = run_py("burundi", "10")
+    assert ret == "OK"
+
+
+def test_par_burundi(run_par):
+    ret = run_par("burundi", "10", "2")
+    assert ret == "OK"
+
+
+def test_car(run_py):
+    ret = run_py("car", "10")
+    assert ret == "OK"
+
+
+def test_par_car(run_par):
+    ret = run_par("car", "10", "2")
+    assert ret == "OK"
+
+
+def test_ssudan(run_py):
+    ret = run_py("ssudan", "10")
+    assert ret == "OK"
+
+
+def test_par_ssudan(run_par):
+    ret = run_par("ssudan", "10", "2")
     assert ret == "OK"
 
 
