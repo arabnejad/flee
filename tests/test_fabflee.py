@@ -114,6 +114,7 @@ def run_par():
         ret = "OK"
         output = subprocess.check_output(
             cmd, shell=True, capture_output=True,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE
             # stderr=subprocess.STDOUT
         ).decode("utf-8")
 
