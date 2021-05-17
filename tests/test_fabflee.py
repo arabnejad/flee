@@ -99,8 +99,8 @@ def run_par():
         config_path = os.path.join(base, config)
         current_dir = os.getcwd()
         os.chdir(config_path)
-        cmd = ["mpiexec",
-               "-np",
+        cmd = ["mpirun",
+               "-n",
                cores,
                "python3",
                "run_par.py",
@@ -114,7 +114,7 @@ def run_par():
         ret = "OK"
         try:
             output = subprocess.check_output(
-                cmd, stderr=subprocess.STDOUT
+                cmd, shell=True, stderr=subprocess.STDOUT
             ).decode("utf-8")
         except subprocess.CalledProcessError as e:
             # ret = "Command '{}' return non-zero exit status: "
