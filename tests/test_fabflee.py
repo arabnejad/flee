@@ -70,7 +70,7 @@ def run_py():
         current_dir = os.getcwd()
         os.chdir(config_path)
 
-        cmd = ["python",
+        cmd = ["python3",
                "run.py",
                "input_csv",
                "source_data",
@@ -102,7 +102,7 @@ def run_par():
         cmd = ["mpirun",
                "-n",
                cores,
-               "python",
+               "python3",
                "run.py",
                "input_csv",
                "source_data",
@@ -115,6 +115,9 @@ def run_par():
         try:
             output = subprocess.check_output(cmd).decode("utf-8")
         except subprocess.CalledProcessError as e:
+            print(e.output)
+            print(e.stderr)
+            print(e.stdout)
             ret = "Command '{}' return non-zero exit status: {}\n{}".format(
                 " ".join(cmd), e.returncode, e.output
             )
