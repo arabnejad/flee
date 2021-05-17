@@ -70,7 +70,7 @@ def run_py():
         current_dir = os.getcwd()
         os.chdir(config_path)
 
-        cmd = ["python3",
+        cmd = ["python",
                "run.py",
                "input_csv",
                "source_data",
@@ -102,7 +102,7 @@ def run_par():
         cmd = ["mpirun",
                "-n",
                cores,
-               "python3",
+               "python",
                "run.py",
                "input_csv",
                "source_data",
