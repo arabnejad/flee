@@ -1,0 +1,893 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Simulation toolkit for the movement of individuals" name="description"/>
+<meta content="Hamid Arabnejad" name="author"/>
+<link href="../images/logo/logo.png" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.4" name="generator"/>
+<title>Simulation instance construction - FLEE</title>
+<link href="../assets/stylesheets/main.bde7dde4.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
+<meta content="#000000" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../static/css/custom.css" rel="stylesheet"/>
+</head>
+<body data-md-color-accent="" data-md-color-primary="black" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#simulation-instance-construction">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="FLEE" class="md-header__button md-logo" data-md-component="logo" href=".." title="FLEE">
+<img alt="logo" src="../images/empty.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            FLEE
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Simulation instance construction
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/arabnejad/flee/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    arabnejad/flee
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../code_reference/flee_person/">
+        Code Reference
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../papers/papers/">
+      Publications
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="FLEE" class="md-nav__button md-logo" data-md-component="logo" href=".." title="FLEE">
+<img alt="logo" src="../images/empty.png"/>
+</a>
+    FLEE
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/arabnejad/flee/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    arabnejad/flee
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
+        Home
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Installation_and_Testing/">
+        Installation and Testing
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Simulation instance construction
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Simulation instance construction
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#construct-an-input-locationscsv-file">
+    Construct an input locations.csv file
+  </a>
+<nav aria-label="Construct an input locations.csv file" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#acled-conflict-locations-extraction">
+    ACLED conflict locations extraction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#unhcr-forced-migrant-counts-and-camp-locations-extraction">
+    UNHCR forced migrant counts and camp locations extraction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#population-data-extraction">
+    Population data extraction
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#construct-an-input-routescsv-file">
+    Construct an input routes.csv file
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#define-location-and-border-closures-in-closurescsv-file">
+    Define location and border closures in closures.csv file
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#define-a-conflict-period-for-a-conflict-situation">
+    Define a conflict period for a conflict situation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#record-conflict-locations-in-conflictscsv-file">
+    Record conflict locations in conflicts.csv file
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#construct-a-network-map-for-a-conflict-situation">
+    Construct a network map for a conflict situation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#construct-validation-data">
+    Construct validation data
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Simulation_instance_execution/">
+        Simulation instance execution
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+        Code Reference
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Code Reference" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Code Reference
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+        flee
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="flee" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+          flee
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../code_reference/flee_person/">
+        Person
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../code_reference/flee_location/">
+        Location
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../code_reference/flee_ecosystem/">
+        Ecosystem
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../papers/papers/">
+        Publications
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#construct-an-input-locationscsv-file">
+    Construct an input locations.csv file
+  </a>
+<nav aria-label="Construct an input locations.csv file" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#acled-conflict-locations-extraction">
+    ACLED conflict locations extraction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#unhcr-forced-migrant-counts-and-camp-locations-extraction">
+    UNHCR forced migrant counts and camp locations extraction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#population-data-extraction">
+    Population data extraction
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#construct-an-input-routescsv-file">
+    Construct an input routes.csv file
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#define-location-and-border-closures-in-closurescsv-file">
+    Define location and border closures in closures.csv file
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#define-a-conflict-period-for-a-conflict-situation">
+    Define a conflict period for a conflict situation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#record-conflict-locations-in-conflictscsv-file">
+    Record conflict locations in conflicts.csv file
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#construct-a-network-map-for-a-conflict-situation">
+    Construct a network map for a conflict situation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#construct-validation-data">
+    Construct validation data
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/arabnejad/flee/edit/master/docs/Simulation_instance_construction.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1 id="simulation-instance-construction"><strong>Simulation instance construction</strong><a class="headerlink" href="#simulation-instance-construction" title="Permanent link">¶</a></h1>
+<p>This documentation details how to construct a conflict scenario for forced displacement simulation. Each conflict situation requires input data (in <code>input_csv</code> directory), validation data (in <code>source_data</code> directory) and execution scripts (<code>run.py</code>, <code>run_par.py</code> and <code>simsetting.csv</code>) as illustrated below:</p>
+<p>To create input and validation data files, the following forced displacement databases are considered:</p>
+<ul>
+<li>the Armed Conflict Location and Event Data Project (ACLED, <a href="https://www.acleddata.com/data">https://www.acleddata.com/data</a>);</li>
+<li>the United Nations High Commissioner for Refugees database (UNHCR, <a href="https://data2.unhcr.org/en/situations">https://data2.unhcr.org/en/situations</a>);</li>
+<li>the population databases (e.g. <a href="https://www.citypopulation.de">https://www.citypopulation.de</a>);</li>
+<li>the geospatial databases (e.g. <a href="https://www.openstreetmap.org">https://www.openstreetmap.org</a>  or <a href="http://www.bing.com/maps">http://www.bing.com/maps</a>).</li>
+</ul>
+<h2 id="construct-an-input-locationscsv-file"><strong>Construct an input locations.csv file</strong><a class="headerlink" href="#construct-an-input-locationscsv-file" title="Permanent link">¶</a></h2>
+<h3 id="acled-conflict-locations-extraction"><strong>ACLED conflict locations extraction</strong><a class="headerlink" href="#acled-conflict-locations-extraction" title="Permanent link">¶</a></h3>
+<p>The ACLED database provides conflict location data for forced displacement simulations. To obtain data on chosen conflict situation, complete the ACLED data export tool fields (<a href="https://acleddata.com/acleddatanew/data-export-tool/">https://acleddata.com/acleddatanew/data-export-tool/</a>) as follows:</p>
+<ul>
+<li>Provide dates of interest for conflict situation (i.e. From and To).</li>
+<li>Select <code>Event Type: Battle</code>.</li>
+<li>Select <code>Sub Event Type</code><ul>
+<li>Armed clash,</li>
+<li>Attack,</li>
+<li>Government regains territory and</li>
+<li>Non-state actor overtakes territory.</li>
+</ul>
+</li>
+<li>Specify <code>Region</code> and <code>Country</code> of conflict situation choice.</li>
+<li>Click on Export and Accept Terms of Use and Attribution Policy.</li>
+<li>Click Export again and <code>&lt;name&gt;.csv</code> file exports to Downloads automatically.</li>
+</ul>
+<p>The ACLED conflict data provides conflict locations to construct <strong><code>locations.csv</code></strong> input file for simulation purposes. After identifying conflict locations and producing <strong><code>locations.csv</code></strong>, the last column is filled with population data for conflict locations.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>name</strong></th>
+<th align="center"><strong>region</strong></th>
+<th align="center"><strong>country</strong></th>
+<th align="center"><strong>lat</strong></th>
+<th align="center"><strong>long</strong></th>
+<th align="center"><strong>location_type</strong></th>
+<th align="center"><strong>conflict_date</strong></th>
+<th align="center"><strong>population/capacity</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">A</td>
+<td align="center">AA</td>
+<td align="center">ABC</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+<td align="center">conflict</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">B</td>
+<td align="center">BB</td>
+<td align="center">ABC</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+<td align="center">conflict</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">C</td>
+<td align="center">CC</td>
+<td align="center">ABC</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+<td align="center">conflict</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="unhcr-forced-migrant-counts-and-camp-locations-extraction"><strong>UNHCR forced migrant counts and camp locations extraction</strong><a class="headerlink" href="#unhcr-forced-migrant-counts-and-camp-locations-extraction" title="Permanent link">¶</a></h3>
+<p>The UNHCR situations provides an overview of active situations worldwide that are facing forced displacement distress. To construct a new conflict situation:</p>
+<ul>
+<li>
+<p>Select an active (conflict) situation of interest from an interactive map and click to access data and documentation relevant to a chosen conflict situation from <a href="https://data2.unhcr.org/en/situations">https://data2.unhcr.org/en/situations</a>.</p>
+</li>
+<li>
+<p>Select a simulation period for conflict situation from <code>Refugees and asylum-seekers from 'chosen situation name' - Total timeline</code>, which also presents forced displacement counts for a chosen period.</p>
+</li>
+<li>
+<p>Obtain total counts of forcibly displaced people by clicking JSON button of <code>Refugees and asylum-seekers from 'chosen situation name' - Total section</code>.</p>
+</li>
+<li>
+<p>Identify camps for each neighbouring country through <code>Breakdown by Country</code> section of the conflict situation.</p>
+</li>
+<li>
+<p>Collect and save data for each camp (e.g. <code>&lt;country_name-camp_name&gt;.csv</code>).</p>
+</li>
+</ul>
+<p>Input camp names (i.e. destination locations) and their capacity into <strong><code>locations.csv</code></strong> file. Camp capacity is the highest number of forced migrants for each camp and obtained from individual camp CSV files that are set in <strong><code>locations.csv</code></strong>. For instance, <code>CampZ.csv</code> has the highest number of forcibly displaced people (18129) on 2015-09-30, which is the camp capacity for CampZ.</p>
+<table>
+<thead>
+<tr>
+<th align="center">...</th>
+<th align="center">...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">2015-03-31</td>
+<td align="center">11470</td>
+</tr>
+<tr>
+<td align="center">2015-06-02</td>
+<td align="center">12405</td>
+</tr>
+<tr>
+<td align="center">2015-07-24</td>
+<td align="center">12405</td>
+</tr>
+<tr>
+<td align="center">2015-08-31</td>
+<td align="center">11359</td>
+</tr>
+<tr>
+<td align="center">2015-09-30</td>
+<td align="center">18129</td>
+</tr>
+<tr>
+<td align="center">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="population-data-extraction"><strong>Population data extraction</strong><a class="headerlink" href="#population-data-extraction" title="Permanent link">¶</a></h3>
+<p>Currently, the population figures for each location will need to be collected and written to the <em>population/capacity</em> column from <a href="www.citypopulation.de">www.citypopulation.de</a>. After the population data has been collected for each location, input these population numbers in <code>locations.csv</code>, which can be then used for simulation execution.</p>
+<h2 id="construct-an-input-routescsv-file"><strong>Construct an input routes.csv file</strong><a class="headerlink" href="#construct-an-input-routescsv-file" title="Permanent link">¶</a></h2>
+<p>Identified conflict zones and camps provide origin and destination locations. We connect these locations to represent how forcibly displaced people flee. We use <a href="https://www.openstreetmap.org">https://www.openstreetmap.org</a> or <a href="http://www.bing.com/maps">http://www.bing.com/maps</a> (or other mapping services) to connect conflict zones and camps, and add additional locations (if required) as a location type <strong>town</strong> to <strong><code>locations.csv</code></strong> as illustrated below:</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>name</strong></th>
+<th align="center"><strong>region</strong></th>
+<th align="center"><strong>country</strong></th>
+<th align="center"><strong>lat</strong></th>
+<th align="center"><strong>long</strong></th>
+<th align="center"><strong>location_type</strong></th>
+<th align="center"><strong>conflict_date</strong></th>
+<th align="center"><strong>population/capacity</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">A</td>
+<td align="center">AA</td>
+<td align="center">ABC</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+<td align="center">conflict</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">B</td>
+<td align="center">BB</td>
+<td align="center">ABC</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+<td align="center">conflict</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">C</td>
+<td align="center">CC</td>
+<td align="center">ABC</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+<td align="center">conflict</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">Z</td>
+<td align="center">ZZ</td>
+<td align="center">ZZZ</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+<td align="center">camp</td>
+<td align="center"></td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">N</td>
+<td align="center">NN</td>
+<td align="center">ABC</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+<td align="center">town</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+<p>Record distances between locations in <strong><code>routes.csv</code></strong> file for simulation using the following format:</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>name1</strong></th>
+<th align="center"><strong>name2</strong></th>
+<th align="center"><strong>distance[km]</strong></th>
+<th align="center"><strong>forced_redirection</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">A</td>
+<td align="center">B</td>
+<td align="center">x1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">B</td>
+<td align="center">C</td>
+<td align="center">x2</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="center">C</td>
+<td align="center">x3</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">B</td>
+<td align="center">N</td>
+<td align="center">x4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">C</td>
+<td align="center">N</td>
+<td align="center">x3</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">N</td>
+<td align="center">Z</td>
+<td align="center">x5</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>forced_redirection</strong> refers to redirection from source location (can be town or camp) to destination location (mainly camp) and source location indicated as forwarding_hub. The value of <code>0</code> indicates no redirection, <code>1</code> indicates redirection (from name2) to name1 and 2 corresponds to redirection (from name1) to name2.</p>
+<h2 id="define-location-and-border-closures-in-closurescsv-file"><strong>Define location and border closures in closures.csv file</strong><a class="headerlink" href="#define-location-and-border-closures-in-closurescsv-file" title="Permanent link">¶</a></h2>
+<p>We identify location or border closure events and document them in <strong>closures.csv</strong> file:</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>closure_type</strong></th>
+<th align="center"><strong>name1</strong></th>
+<th align="center"><strong>name2</strong></th>
+<th align="center"><strong>closure_start = 0</strong></th>
+<th align="center"><strong>closure_end = -1</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">location</td>
+<td align="center">A</td>
+<td align="center">B</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">country</td>
+<td align="center">ABC</td>
+<td align="center">ZZZ</td>
+<td align="center">xxx</td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>closure_type</strong> has 2 possible values:</p>
+<ul>
+<li><strong>location</strong> corresponding to camp or town closure and</li>
+<li><strong>country</strong> referring to border closure.</li>
+</ul>
+<p><strong>closure_start</strong> and <strong>closure_end</strong> are given as integers, counting the number of days after the simulation start. The value of <code>0</code> indicates the start, while <code>-1</code> indicates the end of the simulation.</p>
+<h2 id="define-a-conflict-period-for-a-conflict-situation"><strong>Define a conflict period for a conflict situation</strong><a class="headerlink" href="#define-a-conflict-period-for-a-conflict-situation" title="Permanent link">¶</a></h2>
+<p>We define the simulation period of a conflict situation using <strong>conflict_period.csv</strong> file, which has the following format:</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>StartDate</strong></th>
+<th align="center"><strong>YYYY-MM-DD</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Length</td>
+<td align="center">simulation_period</td>
+</tr>
+</tbody>
+</table>
+<h2 id="record-conflict-locations-in-conflictscsv-file"><strong>Record conflict locations in conflicts.csv file</strong><a class="headerlink" href="#record-conflict-locations-in-conflictscsv-file" title="Permanent link">¶</a></h2>
+<p>We create a <strong>conflicts.csv</strong> file to record conflict locations indicating the start of conflicts in the simulation execution (represented as <code>1</code>):</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>#Day</strong></th>
+<th align="center"><strong>name</strong></th>
+<th align="center"><strong>A</strong></th>
+<th align="center"><strong>B</strong></th>
+<th align="center"><strong>C</strong></th>
+<th align="center"><strong>Z</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="construct-a-network-map-for-a-conflict-situation"><strong>Construct a network map for a conflict situation</strong><a class="headerlink" href="#construct-a-network-map-for-a-conflict-situation" title="Permanent link">¶</a></h2>
+<p>Construct an agent-based network map from locations.csv and routes.csv using <a href="https://carto.com">https://carto.com</a>.</p>
+<p><center><img src="/images/network.png"/></center></p>
+<h2 id="construct-validation-data"><strong>Construct validation data</strong><a class="headerlink" href="#construct-validation-data" title="Permanent link">¶</a></h2>
+<p>There are three CSV file formats required for validation of simulation outputs. CSV file containing total forced migrant counts <strong>refugees.csv</strong> comprises total counts of forcibly displaced people from <code>Refugees and asylum-seekers from 'chosen situation name' - Total</code> JSON file and has the format as demonstrated:</p>
+<table>
+<thead>
+<tr>
+<th align="center">...</th>
+<th align="center">...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">YYYY-MM-DD</td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">YYYY-MM-DD</td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+<p>We obtain data for each camp using the format and label them as <strong>country_name-camp_name.csv</strong>:</p>
+<table>
+<thead>
+<tr>
+<th align="center">...</th>
+<th align="center">...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">YYYY-MM-DD</td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">YYYY-MM-DD</td>
+<td align="center">xxx</td>
+</tr>
+<tr>
+<td align="center">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>data_layout.csv</strong> contains camp names for each camp/destination locations:</p>
+<table>
+<thead>
+<tr>
+<th align="center">total</th>
+<th align="center">refugees.csv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">camp_name1</td>
+<td align="center">country_name-camp_name1.csv</td>
+</tr>
+<tr>
+<td align="center">camp_name2</td>
+<td align="center">country_name-camp_name2.csv</td>
+</tr>
+<tr>
+<td align="center">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+</article>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="md-footer">
+<!-- Further information -->
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<!-- Copyright and theme information -->
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            Derek Groen, Diana Suleimenova, Hamid Arabnejad, Alireza Jahani
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<!-- Social links -->
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/arabnejad/flee" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="mailto:djgroen@gmail.com" rel="noopener" target="_blank" title="">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.tabs", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.4fa0e4ee.min.js", "version": null}</script>
+<script src="../assets/javascripts/bundle.1d3bfcf1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<script src="../static/js/extra.js"></script>
+</body>
+</html>
