@@ -216,5 +216,6 @@ nav:
        - flee:
          - Person: code_reference/flee_person.md
          - Location: code_reference/flee_location.md
+         - Ecosystem: code_reference/flee_ecosystem.md
 
     - Publications: papers/papers.md
